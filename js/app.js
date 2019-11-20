@@ -36,4 +36,16 @@ function addPhraseToDisplay(arr){
     }
 }
 
+function checkLetter(char){
+    const letters = document.querySelectorAll('#phrase li');
+    let match = null;
+    for(let i = 0; i < letters.length; i++){
+        if(char == letters[i].textContent.toLowerCase()){
+            letters[i].className += " show";
+            match = char;
+        }
+    }
+    return match;
+}
+
 addPhraseToDisplay(getRandomPhraseAsArray(phrases));
