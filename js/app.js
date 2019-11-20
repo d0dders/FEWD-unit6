@@ -19,9 +19,21 @@ resetButton.addEventListener('click', () => {
 function getRandomPhraseAsArray(arr){
     const i = Math.floor((Math.random() * 5));
     const phrase = arr[i];
-    return phrase.split();
+    return phrase.split("");
 }
 
-const myWord = getRandomPhraseAsArray(phrases);
+function addPhraseToDisplay(arr){
+    const letterList = document.querySelector('#phrase ul');
+    for (let i = 0; i < arr.length; i++){
+        const listItem = document.createElement("li");
+        listItem.innerHTML = arr[i];        
+        letterList.append(listItem);
+        if(arr[i] != " "){
+            listItem.className = "letter";
+        } else {
+            listItem.className = "space";
+        }
+    }
+}
 
-//Allocate chosen phrase to the html
+addPhraseToDisplay(getRandomPhraseAsArray(phrases));
