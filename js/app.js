@@ -26,7 +26,7 @@ function addPhraseToDisplay(arr){
     const letterList = document.querySelector('#phrase ul');
     for (let i = 0; i < arr.length; i++){
         const listItem = document.createElement("li");
-        listItem.innerHTML = arr[i];        
+        listItem.textContent = arr[i];        
         letterList.append(listItem);
         if(arr[i] != " "){
             listItem.className = "letter";
