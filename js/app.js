@@ -2,12 +2,14 @@ const keyboard = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 const overlay = document.getElementById('overlay');
 const resetButton = document.querySelector('.btn__reset');
+const hearts = document.getElementsByClassName('tries');
+
 const phrases = [
     "Show me the money",
     "Say hello to my little friend",
-    "I love the smell of napalm in the morning",
+    "I see dead people",
     "Just keep swimming",
-    "I'm having an old friend for dinner"
+    "Why so serious"
 ]
 
 let missed = 0;
@@ -49,3 +51,29 @@ function checkLetter(char){
 }
 
 addPhraseToDisplay(getRandomPhraseAsArray(phrases));
+
+keyboard.addEventListener('click', (event) => {
+    const target = event.target;
+    if(target.tagName == 'BUTTON' && target.className != 'chosen'){
+        target.className = "chosen";
+        if(checkLetter(target.textContent) == null){
+            registerMiss();
+        };
+        checkWin();
+    };
+});
+
+function registerMiss() {
+    missed++;
+    hearts[missed - 1].innerHTML = '<img src="images/lostHeart.png" height="35px" width="30px"></img>';
+}
+
+function checkWin() {
+    if(missed == 5){
+        overlay.className = "lose";
+        overlay.style.display = "flex";
+    } else if (document.getElementsByClassName('letter').length == document.getElementsByClassName('show').length){
+        overlay.className = "win";
+        overlay.style.display = "flex";
+    }
+}
