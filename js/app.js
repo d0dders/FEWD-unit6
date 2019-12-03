@@ -3,6 +3,7 @@ const phrase = document.getElementById('phrase');
 const overlay = document.getElementById('overlay');
 const resetButton = document.querySelector('.btn__reset');
 const hearts = document.getElementsByClassName('tries');
+const letterList = document.querySelector('#phrase ul');
 
 const phrases = [
     "Show me the money",
@@ -15,6 +16,7 @@ const phrases = [
 let missed = 0;
 
 resetButton.addEventListener('click', () => {
+    setupGame();
     overlay.style.display = 'none';
 });
 
@@ -25,7 +27,7 @@ function getRandomPhraseAsArray(arr){
 }
 
 function addPhraseToDisplay(arr){
-    const letterList = document.querySelector('#phrase ul');
+    letterList.innerHTML = "";
     for (let i = 0; i < arr.length; i++){
         const listItem = document.createElement("li");
         listItem.textContent = arr[i];        
@@ -50,8 +52,6 @@ function checkLetter(char){
     return match;
 }
 
-addPhraseToDisplay(getRandomPhraseAsArray(phrases));
-
 keyboard.addEventListener('click', (event) => {
     const target = event.target;
     if(target.tagName == 'BUTTON' && target.className != 'chosen'){
@@ -72,8 +72,25 @@ function checkWin() {
     if(missed == 5){
         overlay.className = "lose";
         overlay.style.display = "flex";
+        resetButton.textContent = "Play again!";
     } else if (document.getElementsByClassName('letter').length == document.getElementsByClassName('show').length){
         overlay.className = "win";
         overlay.style.display = "flex";
+        resetButton.textContent = "Play again!";
+    }
+}
+
+function setupGame() {
+    //reset phrase
+    addPhraseToDisplay(getRandomPhraseAsArray(phrases));
+    //reset keyboard
+    const keys = document.querySelectorAll('#qwerty button');
+    for (let i = 0; i < keys.length; i++) {
+        keys[i].className = "";
+    }
+    //reset lives
+    missed = 0;
+    for (let i = 0; i < hearts.length; i++){
+        hearts[i].innerHTML = '<img src="images/liveHeart.png" height="35px" width="30px"></img>';
     }
 }
