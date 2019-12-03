@@ -1,5 +1,6 @@
 /* Main styles */
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&Roboto:300');
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond&display=swap');
 
 /* Variables */
 
@@ -12,7 +13,7 @@
   --color-keys: #37474F;
   --color-keys-light: #E5E5E5;
   --font-size-large: 60px;
-  --font-size-medium: 20px;
+  --font-size-medium: 30px;
   --transition: all .2s ease-in-out;
 }
 
@@ -27,6 +28,8 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
+  background-image: url("../images/background.png");
+  background-repeat: repeat;
 }
 
 li, ol, ul {
@@ -48,6 +51,7 @@ button {
   padding: .5rem 1rem;
   color: var(--color-keys);
   font-size: var(--font-size-medium);
+  font-family: 'EB Garamond', serif;
   background-color: var(--color-keys-light);
   border-radius: 5px;
   -webkit-transition: var(--transition);
