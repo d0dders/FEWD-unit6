@@ -6,11 +6,11 @@ const hearts = document.getElementsByClassName('tries');
 const letterList = document.querySelector('#phrase ul');
 
 const phrases = [
-    "Show me the money",
-    "Say hello to my little friend",
-    "I see dead people",
-    "Just keep swimming",
-    "Why so serious"
+    "Expelliarmus",
+    "Avada Kedavra",
+    "Expecto Patronum",
+    "Wingardium Leviosa",
+    "Petrificus Totalus"
 ]
 
 let missed = 0;
