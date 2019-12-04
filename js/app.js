@@ -69,13 +69,16 @@ function registerMiss() {
 }
 
 function checkWin() {
+    const title = document.querySelector('.title');
     if(missed == 5){
         overlay.className = "lose";
         overlay.style.display = "flex";
+        title.textContent = "Your spell didn't work";
         resetButton.textContent = "Play again!";
     } else if (document.getElementsByClassName('letter').length == document.getElementsByClassName('show').length){
         overlay.className = "win";
         overlay.style.display = "flex";
+        title.textContent = "You cast your spell";
         resetButton.textContent = "Play again!";
     }
 }
