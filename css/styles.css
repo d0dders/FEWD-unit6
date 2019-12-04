@@ -107,7 +107,6 @@ button {
 .show {
   color: #000;
   /*background-color: #76CE82;*/
-  background-color: #CD7F32;
 }
 
 /* Keyboard */
@@ -145,6 +144,7 @@ button {
   left: 0;
   right: 0;
   border-radius: 5px;
+  z-index: 1;
 }
 
 .title {

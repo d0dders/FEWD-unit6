@@ -13,6 +13,7 @@ const phrases = [
     "Petrificus Totalus"
 ]
 
+
 let missed = 0;
 
 resetButton.addEventListener('click', () => {
@@ -38,6 +39,15 @@ function addPhraseToDisplay(arr){
             listItem.className = "space";
         }
     }
+    $('.letter').sparkle({
+        color: "rainbow",
+        overlap: 10
+    });
+    $('.letter')
+    .off("mouseover.sparkle")
+    .off("mouseout.sparkle")
+    .off("focus.sparkle")
+    .off("blur.sparkle");
 }
 
 function checkLetter(char){
@@ -47,6 +57,7 @@ function checkLetter(char){
         if(char == letters[i].textContent.toLowerCase()){
             letters[i].className += " show";
             match = char;
+            $(letters[i]).trigger("start.sparkle");
         }
     }
     return match;
@@ -76,10 +87,13 @@ function checkWin() {
         title.textContent = "Your spell didn't work";
         resetButton.textContent = "Play again!";
     } else if (document.getElementsByClassName('letter').length == document.getElementsByClassName('show').length){
-        overlay.className = "win";
-        overlay.style.display = "flex";
-        title.textContent = "You cast your spell";
-        resetButton.textContent = "Play again!";
+        setTimeout(function() {
+            overlay.className = "win";
+            overlay.style.display = "flex";
+            title.textContent = "You cast your spell";
+            resetButton.textContent = "Play again!";
+        }, 2000);
+        
     }
 }
 
